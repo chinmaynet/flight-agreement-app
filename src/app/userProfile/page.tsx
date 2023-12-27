@@ -315,36 +315,36 @@ const UserProfile = () => {
 
     const handleSaveDetails = () => {
         if (user) {
-            const formData = new FormData();
+            // const formData = new FormData();
 
-            formData.append('userName', editedName);
-            formData.append('userEmail', editedEmail);
+            // formData.append('userName', editedName);
+            // formData.append('userEmail', editedEmail);
 
-            if (user.userRole === 'TourOperator') {
-                formData.append('tourOperatorAddress', editedAddress);
-                formData.append('tourOperatorContactPreferences', editedContactPreference.toString());
-                formData.append('tourOperatorLandLine', editedLandline);
-                formData.append('tourOperatorPhone', editedPhone);
-            } else if (user.userRole === 'AirlineManager') {
-                formData.append('airlineManagerLandLine', editedLandline);
-                formData.append('airlineManagerPhone', editedPhone);
-            }
+            // if (user.userRole === 'TourOperator') {
+            //     formData.append('tourOperatorAddress', editedAddress);
+            //     formData.append('tourOperatorContactPreferences', editedContactPreference ? editedContactPreference.toString() : '');
+            //     formData.append('tourOperatorLandLine', editedLandline);
+            //     formData.append('tourOperatorPhone', editedPhone);
+            // } else if (user.userRole === 'AirlineManager') {
+            //     formData.append('airlineManagerLandLine', editedLandline);
+            //     formData.append('airlineManagerPhone', editedPhone);
+            // }
 
             const requestData = {
                 userName: editedName,
                 userEmail: editedEmail,      
                 tourOperatorAddress:editedAddress,
-                tourOperatorContactPreferences:editedContactPreference.toString(),
+                tourOperatorContactPreferences:(editedContactPreference ?? '').toString(),
                 tourOperatorLandLine:editedLandline,
                 tourOperatorPhone:editedPhone,
                 airlineManagerLandLine:editedLandline,
                 airlineManagerPhone:editedPhone,
             };
 
-            console.log(formData)
-            for (const pair of formData.entries()) {
-                console.log(`${pair[0]}: ${pair[1]}`);
-            }
+            // console.log(formData)
+            // for (const pair of formData.entries()) {
+            //     console.log(`${pair[0]}: ${pair[1]}`);
+            // }
 
             const userString = localStorage.getItem('user');
             const userData = userString ? JSON.parse(userString) : null;
